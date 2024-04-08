@@ -1,0 +1,45 @@
+{
+    "name": "mustit-ux",
+    "version": "1.66.0",
+    "private": true,
+    "scripts": {
+        "serve": "vue-cli-service serve  --port 8085",
+        "clean": "rm -rf ./dist ./public/output",
+        "sass:prod": "sass --charset --quiet --style=compressed src/styles:public/output/css",
+        "build": "npm run clean && npm run sass:prod && vue-cli-service build",
+        "lint": "vue-cli-service lint",
+        "sass": "sass --charset --style=expanded src/styles:public/output/css",
+        "s3:release": "aws s3 sync ./dist/output/css/ s3://mustit-ux/ux/service/development/mobile/$npm_package_version/ --acl public-read",
+        "s3:dev": "aws s3 sync ./dist/output/css/ s3://mustit-ux/ux/service/development/mobile/$npm_package_version/ --acl public-read",
+        "s3:main": "aws s3 sync ./dist/output/css/ s3://mustit-ux/ux/service/production/mobile/$npm_package_version/ --acl public-read"
+    },
+    "dependencies": {
+        "axios": "^1.6.2",
+        "core-js": "^3.6.5",
+        "js-cookie": "^2.2.0",
+        "swiper": "^5.4.5",
+        "vue": "^2.6.11",
+        "vue-lottie": "^0.2.1",
+        "vue-router": "^3.5.3",
+        "vuex": "^3.1.1"
+    },
+    "devDependencies": {
+        "@vue/cli-plugin-babel": "~5.0.0",
+        "@vue/cli-plugin-eslint": "~5.0.0",
+        "@vue/cli-service": "~5.0.0",
+        "babel-eslint": "^10.1.0",
+        "eslint": "^7.32.0",
+        "eslint-config-prettier": "^8.3.0",
+        "eslint-plugin-prettier": "^4.0.0",
+        "eslint-plugin-vue": "^6.2.2",
+        "sass": "^1.49.0",
+        "sass-loader": "^10.2.1",
+        "style-resources-loader": "^1.5.0",
+        "vue-template-compiler": "^2.6.11"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead"
+    ]
+}
